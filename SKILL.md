@@ -1,7 +1,7 @@
 ---
 name: pdf-anti-copy
 description: Use when a PDF must not be selectable, copyable, or searchable. Converts DOCX to image-only PDF via MS Word (DOCX→PDF→JPG→PDF) with reusable Windows scripts.
-version: 1.1.0
+version: 1.2.0
 author: Gege Desembri (GegeDevs), Hermes Agent
 license: MIT
 platforms: [windows]
@@ -18,6 +18,16 @@ Turn documents into PDFs whose text cannot be blocked, copied, searched, or extr
 Windows only, MS Word only. Word must do the DOCX→PDF step: LibreOffice re-flows complex `.docx` (tables, headers, merged cells) and the structure falls apart — that is why the LibreOffice path was removed. Do not reintroduce it for layout-sensitive documents.
 
 Warn once before starting: rasterising kills text selection, search, and screen-reader access by design.
+
+## Verified environment
+
+Full batch passed 100% (57 documents, 0 failures) on:
+
+- Windows 10 Pro 22H2, OS build 19045.2311
+- Microsoft Office LTSC Professional Plus 2021
+- Run via `run-windows.bat` (cscript → VBS → `image-pdf.ps1`)
+
+Treat that combination as the known-good baseline. Report the same three facts back when a user says "gagal" so the failing part can be isolated: OS build, Office edition, and which script printed the error.
 
 ## What it produces
 
