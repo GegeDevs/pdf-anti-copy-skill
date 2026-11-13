@@ -65,8 +65,8 @@ Rules that break viewers when violated:
 - After the streams end, poll `ex.Status` until it stops being `0` before reading `ex.ExitCode`.
 - Exit code 1 from `exit 1` inside `catch` propagates correctly (verified).
 
-## 5. LibreOffice path (host)
+## 5. Why there is no LibreOffice path
 
-`soffice --headless --convert-to pdf --outdir <dir> file.docx` then `pdf-to-image-pdf.py`. Fast and headless, but fonts/spacing can differ from Word; check one page if the document is print-critical. `pdf-to-image-pdf.py` reads page size from `pdfinfo` so the output keeps the original page dimensions instead of assuming A4.
+LibreOffice was tried as a headless shortcut (`soffice --headless --convert-to pdf`) and removed: on this user's real batch many `.docx` came out with broken structure — re-flowed tables, shifted headers, merged cells collapsing. Word is the only converter that preserves the layout these forms depend on. Do not add a Linux/LibreOffice fallback to save time; a fast wrong layout is worse than a slow correct one.
 
-Verify with the commands in SKILL.md; `pdftotext` returning 0-3 bytes is the actual proof that the text layer is gone.
+If a machine cannot run Word, say so and stop — do not substitute LibreOffice for layout-sensitive documents.
