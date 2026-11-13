@@ -64,4 +64,10 @@ pdftotext out.pdf - | wc -c                    # 0-3 bytes = no text layer
 - Word COM can hang when driven from PowerShell; the scripts drive Word from VBS
   for that reason. Do not "fix" it with retries.
 
+## Verified
+
+Full batch (57 documents, 0 failures) on Windows 10 Pro 22H2 build 19045.2311 with
+Microsoft Office LTSC Professional Plus 2021, driven by `run-windows.bat`.
+That is the known-good baseline; other Office builds may rasterise differently.
+
 MIT licensed.
